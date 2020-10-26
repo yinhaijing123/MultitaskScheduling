@@ -8,15 +8,15 @@ using namespace std;
 #define CPUNUM  2
 #define MAX(a,b) ((a)>(b))?(a):(b)
 int Layer[VTXNUM][VTXNUM];
-bool TCflag=0;                          //ÈÎÎñ¸´ÖÆ±êÖ¾Î»£¨Èô½øĞĞÈÎÎñ¸´ÖÆ£¬Ôò½«ÆäÖÃÎª1£©
+bool TCflag=0;                          //ä»»åŠ¡å¤åˆ¶æ ‡å¿—ä½ï¼ˆè‹¥è¿›è¡Œä»»åŠ¡å¤åˆ¶ï¼Œåˆ™å°†å…¶ç½®ä¸º1ï¼‰
 //int cost[VTXNUM][VTXNUM];
-int cost[VTXNUM][VTXNUM]={/*     T1      T2      T3     T4      T5     T6     T7     T8    T9 */
-	                       0,    0,      0,      0,     0,      0,     0,     0,     0,     0,   
-	           /*T1*/      0,    2,      4,      1,     1,      1,     0,     0,     0,     0, 
-               /*T2*/      0,    0,      3,      0,     0,      0,     1,     12,    6,     0,
+int cost[VTXNUM][VTXNUM]={         /*    T1      T2      T3     T4      T5     T6     T7     T8    T9     */
+	                           0,    0,      0,      0,     0,      0,     0,     0,     0,     0,   
+	               /*T1*/      0,    2,      4,      1,     1,      1,     0,     0,     0,     0, 
+                       /*T2*/      0,    0,      3,      0,     0,      0,     1,     12,    6,     0,
 		       /*T3*/      0,	 0,      0,      3,     0,      0,     0,     12,    1,     0,          
 		       /*T4*/      0,    0,      0,      0,     4,      0,     0,     0,     1,     0,
-			   /*T5*/      0,    0,      0,      0,     0,      5,     0,     0,     10,    0,
+		       /*T5*/      0,    0,      0,      0,     0,      5,     0,     0,     10,    0,
 		       /*T6*/      0,    0,      0,      0,     0,      0,     4,     0,     0,     10,
 		       /*T7*/	   0,    0,      0,      0,     0,      0,     0,     4,     0,     10,
 		       /*T8*/	   0,    0,      0,      0,     0,      0,     0,     0,     4,     10,
@@ -39,14 +39,14 @@ struct cpu
 
 
 
-/*½¨Á¢Ô­Ê¼¾ØÕó*/
+/*å»ºç«‹åŸå§‹çŸ©é˜µ*/
 void CreateOriginMatrix()
 {
 	int i=0,j=0;
 	//1.input Task  execute time
 	for(i=1;i<VTXNUM;i++)
 	{
-		printf("ÇëÊäÈëÈÎÎñ%dµÄÖ´ĞĞÊ±¼ä£º",i);
+		printf("è¯·è¾“å…¥ä»»åŠ¡%dçš„æ‰§è¡Œæ—¶é—´ï¼š",i);
 		scanf("%d",&cost[i][i]);
 	}
 
@@ -54,12 +54,12 @@ void CreateOriginMatrix()
 	while(1)
 	{
 		int c=0;
-		printf("===============================ÇëÑ¡Ôñ=====================================\n");
-		printf("=============1. ¼ÌĞøÊäÈëÍ¨ĞÅÖµ=========2. ½áÊøÊäÈëÍ¨ĞÅÖµ==================\n");
+		printf("===============================è¯·é€‰æ‹©=====================================\n");
+		printf("=============1. ç»§ç»­è¾“å…¥é€šä¿¡å€¼=========2. ç»“æŸè¾“å…¥é€šä¿¡å€¼==================\n");
 		scanf("%d",&c);
 		if(c==1)
 		{
-			printf("ÇëÊäÈëi£¬j¼°ÈÎÎñiºÍÈÎÎñjÖ®¼äµÄÍ¨ĞÅÊ±¼ä\n");
+			printf("è¯·è¾“å…¥iï¼ŒjåŠä»»åŠ¡iå’Œä»»åŠ¡jä¹‹é—´çš„é€šä¿¡æ—¶é—´\n");
 			scanf("%d %d",&i,&j);
 			scanf("%d",&cost[i][j]);
 		}
@@ -71,7 +71,7 @@ void CreateOriginMatrix()
 	
 }
 
-/*´òÓ¡¾ØÕóx*/
+/*æ‰“å°çŸ©é˜µx*/
 void PrintMatrix(int (*x)[VTXNUM],char *log)
 {
 	printf("===============================%s===============================\n",log);
@@ -85,7 +85,7 @@ void PrintMatrix(int (*x)[VTXNUM],char *log)
 	}
 }
 
-/*¿½±´Ò»¸öÁÙÊ±¾ØÕó£¬±ÜÃâĞŞ¸ÄÔ­¾ØÕó*/
+/*æ‹·è´ä¸€ä¸ªä¸´æ—¶çŸ©é˜µï¼Œé¿å…ä¿®æ”¹åŸçŸ©é˜µ*/
 void Copy(int (*src)[VTXNUM],int (*dest)[VTXNUM])
 {
 	for(int i=0;i<VTXNUM;i++)
@@ -97,7 +97,7 @@ void Copy(int (*src)[VTXNUM],int (*dest)[VTXNUM])
 	}
 }
 
-/*ÅĞ¶ÏtaskiÈÎÎñÊÇ·ñÈë¶ÈÎª0*/
+/*åˆ¤æ–­taskiä»»åŠ¡æ˜¯å¦å…¥åº¦ä¸º0*/
 bool IsIndgreeZero(int (*x)[VTXNUM],int taski)
 {
 	for(int j=1;j<taski;j++)
@@ -110,7 +110,7 @@ bool IsIndgreeZero(int (*x)[VTXNUM],int taski)
 	return true;
 }
 
-/*½«ÒÑ·ÖÅäµÄÈÎÎñËùÔÚĞĞµÄÍ¨ĞÅÖµÖÃÎª0£¨¼´£ºÒÔ¸ÃÈÎÎñÎª»¡Î²µÄÏà¹ØµÄÈÎÎñ½ÚµãµÄÈë¶È¾ù¼õÒ»£©£»Í¬Ê±±ê¼Ç¸ÃÈÎÎñ*/
+/*å°†å·²åˆ†é…çš„ä»»åŠ¡æ‰€åœ¨è¡Œçš„é€šä¿¡å€¼ç½®ä¸º0ï¼ˆå³ï¼šä»¥è¯¥ä»»åŠ¡ä¸ºå¼§å°¾çš„ç›¸å…³çš„ä»»åŠ¡èŠ‚ç‚¹çš„å…¥åº¦å‡å‡ä¸€ï¼‰ï¼›åŒæ—¶æ ‡è®°è¯¥ä»»åŠ¡*/
 void SetZero(int (*x)[VTXNUM],vector<int> taski)
 {
 	int size=taski.size();
@@ -129,12 +129,12 @@ void SetZero(int (*x)[VTXNUM],vector<int> taski)
 	}
 	
 }
-/*·Ö²ã*/
+/*åˆ†å±‚*/
 void Layered()
 {
 	int tmp[VTXNUM][VTXNUM];
 	int i,j;
-	vector<int> zerotask;              //´æ´¢ÒÑ·ÖÅäµÄÈÎÎñ
+	vector<int> zerotask;              //å­˜å‚¨å·²åˆ†é…çš„ä»»åŠ¡
 	Copy(cost,tmp);
 	PrintMatrix(tmp,"OriginMatrix");
 
@@ -159,7 +159,7 @@ void Layered()
 	PrintMatrix(Layer,"LayeredMatrix");
 }
 
-//¶ÔCPU½øĞĞ³õÊ¼»¯
+//å¯¹CPUè¿›è¡Œåˆå§‹åŒ–
 void InitiCPU()
 {
 	for(int i=0;i<CPUNUM;i++)
@@ -171,7 +171,7 @@ void InitiCPU()
 	}
 }
 
-//ÈÎÎñ¸´ÖÆCPU³õÊ¼»¯--Ã¿¸öCPUµÄµÚÒ»¸öÈÎÎñ¾ù¸´ÖÆÎªtask1
+//ä»»åŠ¡å¤åˆ¶CPUåˆå§‹åŒ–--æ¯ä¸ªCPUçš„ç¬¬ä¸€ä¸ªä»»åŠ¡å‡å¤åˆ¶ä¸ºtask1
 void InitiCPU_TaskCopy()
 {
 	for(int i=0;i<CPUNUM;i++)
@@ -208,11 +208,11 @@ void InitiTask()
 }
 
 
-//ÕÒ³öÈÎÎñtaskµÄÇ°Çı½ÚµãĞòÁĞ£¬²¢·µ»Ø
+//æ‰¾å‡ºä»»åŠ¡taskçš„å‰é©±èŠ‚ç‚¹åºåˆ—ï¼Œå¹¶è¿”å›
 vector<int> FindPrevTask(int task)
 {
 	vector<int> prev_task;
-	//ÔÚDAG¾ØÕóÖĞ£¬taskÈÎÎñµÄÇ°ÇıÈÎÎñÎªµÚ1-task-1ĞĞ£¬taskÁĞÖĞÖµ·ÇÁãµÄĞĞÖµ¼¯ºÏ¡£
+	//åœ¨DAGçŸ©é˜µä¸­ï¼Œtaskä»»åŠ¡çš„å‰é©±ä»»åŠ¡ä¸ºç¬¬1-task-1è¡Œï¼Œtaskåˆ—ä¸­å€¼éé›¶çš„è¡Œå€¼é›†åˆã€‚
 	for(int k=1;k<task;k++)
 	{
 		if(cost[k][task]!=0)
@@ -224,23 +224,23 @@ vector<int> FindPrevTask(int task)
 }
 
 
-//´òÓ¡ÈÎÎñtaskµÄÇ°ÇıÈÎÎñ¼¯
+//æ‰“å°ä»»åŠ¡taskçš„å‰é©±ä»»åŠ¡é›†
 void PrintPrevTask(int task,vector<int> prev_task)
 {
 	if(prev_task.size()==0)
 	{
-		printf("ÈÎÎñ%dÎªÆğÊ¼ÈÎÎñ\n",task);
+		printf("ä»»åŠ¡%dä¸ºèµ·å§‹ä»»åŠ¡\n",task);
 		return;
 	}
-	printf("ÈÎÎñ%dµÄÇ°ÇıÈÎÎñ¼¯Îª£º",task);
+	printf("ä»»åŠ¡%dçš„å‰é©±ä»»åŠ¡é›†ä¸ºï¼š",task);
 	for(int k=0;k<prev_task.size();k++)
 	{
-		printf("%d£¬",prev_task[k]);
+		printf("%dï¼Œ",prev_task[k]);
 	}
 	printf("\n");
 }
 
-//´òÓ¡ËùÓĞÈÎÎñµÄÇ°ÇıÈÎÎñ¼¯¡£
+//æ‰“å°æ‰€æœ‰ä»»åŠ¡çš„å‰é©±ä»»åŠ¡é›†ã€‚
 void TestPrevTasks()
 {
 	printf("===============================PrevTasks===============================\n");
@@ -250,11 +250,11 @@ void TestPrevTasks()
 	}
 }
 
-//¼ÆËãÈÎÎñiÔÚcpuidºÅcpuµÄ¿ªÊ¼Ê±¼ä
+//è®¡ç®—ä»»åŠ¡iåœ¨cpuidå·cpuçš„å¼€å§‹æ—¶é—´
 int CalStartTime(int cpuid,int distribute_task,vector<int> prev_task)
 {
-	int max=CPU[cpuid].usedtime;            //cpuÒÑÊ¹ÓÃÊ±¼ä
-	int tmpstarttime=0;            //ÁÙÊ±¿ªÊ¼Ê±¼ä
+	int max=CPU[cpuid].usedtime;            //cpuå·²ä½¿ç”¨æ—¶é—´
+	int tmpstarttime=0;            //ä¸´æ—¶å¼€å§‹æ—¶é—´
 	int size=prev_task.size();
 	if(distribute_task==1)
 	{
@@ -262,7 +262,7 @@ int CalStartTime(int cpuid,int distribute_task,vector<int> prev_task)
 	}
 	for(int i=0;i<size;i++)
 	{
-		//ÅĞ¶ÏÈÎÎñµÄÇ°¼ÌÈÎÎñĞòÁĞ£¬ÊÇ·ñÓë¸Ã´ı·ÖÅäÈÎÎñÔÚÒ»¸öCPUÉÏ£¬Èç¹û¾ùÔÚÒ»¸öCPUÉÏ£¬¸ÃÈÎÎñ¿ªÊ¼Ê±¼äÎª±¾CPU usedtime£»·ñÔò£ºÎªÆämax{Ç°Çıend+Í¨ĞÅÖµ}
+		//åˆ¤æ–­ä»»åŠ¡çš„å‰ç»§ä»»åŠ¡åºåˆ—ï¼Œæ˜¯å¦ä¸è¯¥å¾…åˆ†é…ä»»åŠ¡åœ¨ä¸€ä¸ªCPUä¸Šï¼Œå¦‚æœå‡åœ¨ä¸€ä¸ªCPUä¸Šï¼Œè¯¥ä»»åŠ¡å¼€å§‹æ—¶é—´ä¸ºæœ¬CPU usedtimeï¼›å¦åˆ™ï¼šä¸ºå…¶max{å‰é©±end+é€šä¿¡å€¼}
 		if(Task[prev_task[i]].cpuid!=cpuid)
 		{
 			tmpstarttime=Task[prev_task[i]].end+cost[prev_task[i]][distribute_task];
@@ -272,20 +272,20 @@ int CalStartTime(int cpuid,int distribute_task,vector<int> prev_task)
 	return max;
 }
 
-//ÎªÈÎÎñdistribute_task·ÖÅäºÄÊ±×îĞ¡µÄCPU
+//ä¸ºä»»åŠ¡distribute_taskåˆ†é…è€—æ—¶æœ€å°çš„CPU
 void FindMinCostCPU(int distribute_task)
 {
 	int cpuid=0;
-	vector<int> prev_task;                    //Ç°ÇıÈÎÎñ¼¯
-	int minstarttime=0x00ffffff;              //×îĞ¡¿ªÊ¼Ê±¼ä
+	vector<int> prev_task;                    //å‰é©±ä»»åŠ¡é›†
+	int minstarttime=0x00ffffff;              //æœ€å°å¼€å§‹æ—¶é—´
 	int tmp=0;
-	int mincpuid=0;                           //×îĞ¡µÄCPU±àºÅ
-	//1.ÒÀ´Î±éÀúÈı¸öCPU£¬Çó×îĞ¡ºÄÊ±µÄÒ»¸ö£¬²¢¸üĞÂcpu½á¹¹Ìå
+	int mincpuid=0;                           //æœ€å°çš„CPUç¼–å·
+	//1.ä¾æ¬¡éå†ä¸‰ä¸ªCPUï¼Œæ±‚æœ€å°è€—æ—¶çš„ä¸€ä¸ªï¼Œå¹¶æ›´æ–°cpuç»“æ„ä½“
 	for(cpuid;cpuid<CPUNUM;cpuid++)
 	{
-		//2.ÕÒÇ°¼ÌÈÎÎñ£¬²¢¼ÇÂ¼ÏÂÀ´
+		//2.æ‰¾å‰ç»§ä»»åŠ¡ï¼Œå¹¶è®°å½•ä¸‹æ¥
 		prev_task=FindPrevTask(distribute_task);
-		//3.¼ÆËã½«¸ÃÈÎÎñ·ÖÅäµ½¸ÃCPUÉÏºó£¬¸ÃÈÎÎñµÄ¿ªÊ¼Ê±¼ä¡£max{±¾cpu usedtime£¬max{Ç°Çı1µÄend+Í¨ĞÅÖµ£¬Ç°Çı2µÄend+Í¨ĞÅÖµ£¬¡­¡­}}
+		//3.è®¡ç®—å°†è¯¥ä»»åŠ¡åˆ†é…åˆ°è¯¥CPUä¸Šåï¼Œè¯¥ä»»åŠ¡çš„å¼€å§‹æ—¶é—´ã€‚max{æœ¬cpu usedtimeï¼Œmax{å‰é©±1çš„end+é€šä¿¡å€¼ï¼Œå‰é©±2çš„end+é€šä¿¡å€¼ï¼Œâ€¦â€¦}}
 		tmp=CalStartTime(cpuid,distribute_task,prev_task);
 		if(tmp<minstarttime)
 		{
@@ -300,10 +300,10 @@ void FindMinCostCPU(int distribute_task)
 	CPU[mincpuid].usedtime=Task[distribute_task].end;
 }
 
-//°´²ãÒÀ´ÎÎªËùÓĞÈÎÎñ·ÖÅäCPU
+//æŒ‰å±‚ä¾æ¬¡ä¸ºæ‰€æœ‰ä»»åŠ¡åˆ†é…CPU
 void DistributeCPU()
 {
-	//1.°´²ãÎªÈÎÎñ·ÖÅäCPU¡£¼´£º±éÀúLayer
+	//1.æŒ‰å±‚ä¸ºä»»åŠ¡åˆ†é…CPUã€‚å³ï¼šéå†Layer
 	for(int i=1;i<VTXNUM;i++)
 
 	{
@@ -317,27 +317,27 @@ void DistributeCPU()
 			{
 				break;
 			}
-			//2.ÎªµÚi²ãµÚj¸ö½Úµã²éÕÒ×îĞ¡»¨·ÑµÄCPU¡£¼´·Ö±ğ½«ÈÎÎñLayer[i][j]
+			//2.ä¸ºç¬¬iå±‚ç¬¬jä¸ªèŠ‚ç‚¹æŸ¥æ‰¾æœ€å°èŠ±è´¹çš„CPUã€‚å³åˆ†åˆ«å°†ä»»åŠ¡Layer[i][j]
 			FindMinCostCPU(Layer[i][j]);
 		}
 	}
 }
 
-//´òÓ¡ÈÎÎñ·ÖÅäºó£¬CPUÉÏµÄÈÎÎñ¼¯¡£
+//æ‰“å°ä»»åŠ¡åˆ†é…åï¼ŒCPUä¸Šçš„ä»»åŠ¡é›†ã€‚
 void PrintCPUCost()
 {
 	cout<<"===============================CpuCost==============================="<<endl;
 	for(int i=0;i<CPUNUM;i++)
 	{
-		printf("cpu%dµÄÈÎÎñ¼¯Îª£º",i);
+		printf("cpu%dçš„ä»»åŠ¡é›†ä¸ºï¼š",i);
 		for(int j=1;j<=CPU[i].num;j++)
 		{
 			/*if(TCflag&&(CPU[i].T[j]==1))
 			{
-				printf("ÈÎÎñ1:¿ªÊ¼Ê±¼ä0¡ª½áÊøÊ±¼ä2");
+				printf("ä»»åŠ¡1:å¼€å§‹æ—¶é—´0â€”ç»“æŸæ—¶é—´2");
 				continue;
 			}*/
-			printf("ÈÎÎñ%d:¿ªÊ¼Ê±¼ä%d¡ª½áÊøÊ±¼ä%d\t",CPU[i].T[j],Task[CPU[i].T[j]].start,Task[CPU[i].T[j]].end);
+			printf("ä»»åŠ¡%d:å¼€å§‹æ—¶é—´%dâ€”ç»“æŸæ—¶é—´%d\t",CPU[i].T[j],Task[CPU[i].T[j]].start,Task[CPU[i].T[j]].end);
 		}
 		cout<<endl;
 	}
@@ -383,86 +383,3 @@ int main(int argc, char* argv[])
 	system("pause");
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*DataStruction :ADj*/
-//typedef char VertextType;
-//typedef int EdgeType;
-//
-//
-//
-//typedef struct EdgeNode{
-//	int adjvex;
-//	EdgeType weight;
-//	EdgeNode *next;
-//}EdgeNode;
-//
-//typedef struct VertexNode{
-//	VertextType data;
-//	EdgeNode *firstedge;
-//}VertexNode,AdjList[MAXVEX];
-//
-//typedef struct{
-//	AdjList adjlist;
-//	int numVertexes,numEdges;
-//}GraphAdjList;
-//
-//void CreateALGraph(GraphAdjList *G)
-//{
-//	int i,j,k;
-//	EdgeNode *e;
-//	printf("ÊäÈë¶¥µãÊıºÍ±ßÊı£º\n");
-//	scanf("%d,%d",&G->numVertexes,&G->numEdges);
-//
-//	/*½¨Á¢¶¥µã*/
-//	for(i=0;i<G->numVertexes;i++)             
-//	{
-//		scanf("%d",&G->adjlist[i].data);
-//		G->adjlist[i].firstedge=NULL;
-//	}
-//	/*½¨Á¢±ß±í*/
-//	for(k=0;k<G->numEdges;k++)
-//	{
-//		printf("ÊäÈë±ß(vi,vj)ÉÏµÄ¶¥µãĞòºÅ£º\n");
-//		scanf("%d,%d",&i,&j);
-//		e=(EdgeNode *)malloc(sizeof(EdgeNode));
-//		e->adjvex=j;
-//		e->next=G->adjlist[i].firstedge;
-//		printf("ÊäÈë±ß(v%d,v%d)ÉÏµÄÈ¨ÖØ£º\n",i,j);
-//		scanf("%d",&e->weight);
-//		G->adjlist[i].firstedge=e;
-//		
-//		/*e=(EdgeNode *)malloc(sizeof(EdgeNode));
-//		e->adjvex=i;
-//		e->next=G->adjlist[j].firstedge;
-//		G->adjlist[j].firstedge=e;*/
-//	}
-//}
-//
-//GraphAdjList* CreateRALGraph(GraphAdjList *G)
-//{
-//	GraphAdjList* tmp=(GraphAdjList *)malloc(sizeof(GraphAdjList));
-//	int i,j,k;
-//	for(i=0;i<tmp->numVertexes;i++)
-//	{
-//		tmp->adjlist[i].data=G->adjlist[i].data;
-//		tmp->adjlist[i].firstedge=NULL;
-//	}
-//	for(k=0;k<tmp->numEdges;k++)
-//	{
-//		;
-//	}
-//	return tmp;
-//}
