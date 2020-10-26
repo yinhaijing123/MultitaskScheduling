@@ -1,0 +1,24 @@
+﻿生成启动时间为 2020/10/15 20:02:00。
+     1>项目“D:\Code\paper\Layer\Layer\Layer.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\LayeredSchedule.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         d:\ProgramFile\VS2010\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Schedule.cpp
+         Schedule.cpp
+     1>d:\code\paper\layer\layer\schedule.cpp(120): warning C4018: “<”: 有符号/无符号不匹配
+     1>d:\code\paper\layer\layer\schedule.cpp(136): warning C4101: “j”: 未引用的局部变量
+     1>d:\code\paper\layer\layer\schedule.cpp(236): warning C4018: “<”: 有符号/无符号不匹配
+       Link:
+         d:\ProgramFile\VS2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Code\paper\Layer\Debug\LayeredSchedule.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\LayeredSchedule.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\Code\paper\Layer\Debug\LayeredSchedule.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Code\paper\Layer\Debug\LayeredSchedule.lib" /MACHINE:X86 Debug\Schedule.obj
+         LINK : 没有找到 D:\Code\paper\Layer\Debug\LayeredSchedule.exe 或上一个增量链接没有生成它；正在执行完全链接
+         Layer.vcxproj -> D:\Code\paper\Layer\Debug\LayeredSchedule.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\Code\paper\Layer\Debug\LayeredSchedule.exe;#1" /manifest Debug\LayeredSchedule.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         正在删除文件“Debug\LayeredSchedule.unsuccessfulbuild”。
+         正在对“Debug\LayeredSchedule.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\Code\paper\Layer\Layer\Layer.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:03.33
